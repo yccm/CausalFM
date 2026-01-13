@@ -2,6 +2,17 @@
 
 PyTorch Implementation on Paper [Foundation Models for Causal Inference via Prior-Data Fitted Networks](https://arxiv.org/abs/2506.10914)
 
+🚨 **New Release** 🚨  
+We have released a new package **CausalFM-toolkit** with a clean API and ready-to-use implementations:  
+
+👉 GitHub: https://github.com/yccm/CausalFM-toolkit
+
+📖 Docs: https://causalfm-toolkit.readthedocs.io
+
+(Recommended for users who want to directly apply CausalFM in practice)
+
+
+
 ## 📌 Introduction
 
 In this paper, we introduce **CausalFM**, a comprehensive framework for training PFN-based foundation models in various causal inference settings.
