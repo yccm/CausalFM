@@ -1,7 +1,7 @@
 # CausalFM
 
 
-🚨 **New Release** 🚨  
+## 🚨 **New Release** 🚨  
 
 We have released a new package **CausalFM-toolkit** with a clean API and ready-to-use implementations:  
 
