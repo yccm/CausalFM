@@ -197,11 +197,11 @@ class CATETrainer:
                 forward_time = time.time() - forward_start_time
                 
                 # Get GMM parameters
-                gmm_pi = out['gmm_pi']
-                gmm_mu = out['gmm_mu']
-                gmm_sigma = out['gmm_sigma']
+                gmm_pi = out['gmm_pi'][:, single_eval_pos:, :]
+                gmm_mu = out['gmm_mu'][:, single_eval_pos:, :]
+                gmm_sigma = out['gmm_sigma'][:, single_eval_pos:, :]
 
-                ite_bs1 = ite.permute(1, 0, 2)  
+                ite_bs1 = ite.permute(1, 0, 2)[:, single_eval_pos:, :]  
 
                 loss = self.gmm_nll_loss(gmm_pi, gmm_mu, gmm_sigma, ite_bs1)
                 cate = (gmm_pi * gmm_mu).sum(dim=-1).unsqueeze(-1)  
@@ -276,11 +276,11 @@ class CATETrainer:
                     single_eval_pos = int(len(x) * 0.8)
                     out = self.model(x, a, y, m, single_eval_pos)
                     
-                    pi    = out['gmm_pi']       
-                    mu    = out['gmm_mu']
-                    sigma = out['gmm_sigma']
+                    pi    = out['gmm_pi'][:, single_eval_pos:, :]       
+                    mu    = out['gmm_mu'][:, single_eval_pos:, :]
+                    sigma = out['gmm_sigma'][:, single_eval_pos:, :]
 
-                    ite_bs1 = ite.permute(1, 0, 2)  
+                    ite_bs1 = ite.permute(1, 0, 2)[:, single_eval_pos:, :]  
 
                     loss = self.gmm_nll_loss(pi, mu, sigma, ite_bs1)
                     cate = (pi * mu).sum(dim=-1).unsqueeze(-1)  
